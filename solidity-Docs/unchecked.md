@@ -1,11 +1,27 @@
 ---
-title: "Unchecked Blocks in Solidity"
+title: "Unchecked Blocks in Solidity (Gas Optimization & Security Risks)"
 published: 2024-09-04
-description: "Documentation page explaining the `unchecked` block in Solidity, when to use it, its purpose, risks, and secure usage examples."
+description: "Learn about Solidity's unchecked blocks, their purpose for gas optimization, security trade-offs, and best practices with code examples."
 tags: [Solidity, Unchecked, Gas Optimization, Arithmetic, Security]
 category: Solidity Docs
 draft: false
 ---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Unchecked Blocks in Solidity (Gas Optimization & Security Risks)",
+  "description": "Learn about Solidity's unchecked blocks, their purpose for gas optimization, security trade-offs, and best practices with code examples.",
+  "author": { "@type": "Person", "name": "The Sandf" },
+  "datePublished": "2024-09-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://multiv-rekt.vercel.app/posts/solidity-docs/unchecked/"
+  }
+}
+</script>
+
 
 # `unchecked` in Solidity
 
@@ -62,7 +78,7 @@ contract UncheckedExample {
 
 ##  Security Considerations
 
-* Using `unchecked` **removes protections** — errors won’t revert.
+* Using `unchecked` **removes protections** - errors won’t revert.
 * Attackers could exploit wraparound to manipulate balances, counters, or logic.
 * Should only be used when:
 
@@ -93,7 +109,7 @@ contract LoopExample {
 
 ##  Best Practices
 
-* **Default to safe arithmetic** — use `unchecked` only when necessary.
+* **Default to safe arithmetic** - use `unchecked` only when necessary.
 * Add **comments** explaining why `unchecked` is safe.
 * Never use it in user balance updates or sensitive math unless wraparound is intentional.
 

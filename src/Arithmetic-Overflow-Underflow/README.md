@@ -1,15 +1,34 @@
 ---
-title: "Hulk vs Iron Man — Arithmetic Overflow & Underflow Explained"
+title: "Thor vs Hulk & Iron Man - Arithmetic Overflow & Underflow in Solidity"
 published: 2024-09-04
-description: "MCU storytelling analogy (Hulk's Rage vs Iron Man's Suit) to explain arithmetic overflow & underflow vulnerabilities in Solidity smart contracts. Includes vulnerable code, exploit, and fixes for both pre-0.8 and post-0.8 versions."
-image: /Overflow-Underflow.jpg
+description: "Thor challenges Hulk’s rage and Iron Man’s power suit to explain arithmetic overflow & underflow in Solidity. Includes vulnerable code, exploits, and fixes."
+image: /overflow-underflow.jpg
 tags: [Solidity, Smart Contracts, Security, Arithmetic, MCU]
 category: Audit-Case-Study
 draft: false
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Thor vs Hulk & Iron Man - Arithmetic Overflow & Underflow in Solidity",
+  "description": "Thor challenges Hulk’s rage and Iron Man’s power suit to explain arithmetic overflow & underflow in Solidity. Includes vulnerable code, exploits, and fixes.",
+  "image": "https://multiv-rekt.vercel.app/overflow-underflow.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "The Sandf"
+  },
+  "datePublished": "2024-09-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://multiv-rekt.vercel.app/posts/arithmetic-overflow-underflow/"
+  }
+}
+</script>
 
-# Arithmetic Overflow & Underflow 🔢
+
+# ⚡ Thor Breaks Math - Arithmetic Overflow & Underflow in Solidity
 
 **MCU Analogy: The Hulk’s Rage vs. The Iron Man Suit**
 
@@ -29,27 +48,29 @@ This case study illustrates both versions through an MCU analogy:
 
 ---
 
-## The Battle
+##  🎬 Story Time - The Battle
 
 Thor ⚡️ enters the battlefield. His mission: **test the limits of Hulk’s rage and Iron Man’s power suit**.
 
 * **Round 1: HulkRageToken (Overflow)**
-  Thor pushes Hulk’s rage meter past its limits. At first, Hulk gets angrier, but once his rage exceeds the storage limit (`uint8 = 255`), it wraps around to a calm number. Thor laughs — *the strongest Avenger has been tricked by math*.
+  Thor pushes Hulk’s rage meter past its limits. At first, Hulk gets angrier, but once his rage exceeds the storage limit (`uint8 = 255`), it wraps around to a calm number. Thor laughs - *the strongest Avenger has been tricked by math*.
 
 * **Round 2: IronManSuit (Underflow)**
   Thor drains the Iron Man suit’s energy beyond zero. Instead of shutting down, the suit glitches, overflowing into maximum power (`2²⁵⁶ − 1`). The suit explodes into chaos, handing Thor unlimited energy.
 
 ---
 
+📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Arithmetic-Overflow-Underflow)
+
 ## Vulnerable Contracts (Pre-0.8.0)
 
 ### HulkRageToken.sol (Overflow)
 
-**Context**:  Read about `overflow/underflow` in <0.8.0 [docu here](#).
+**Context**:  Read about `overflow/underflow` in <0.8.0 [`docu here`](#).
 * This contract demonstrates an Arithmetic Overflow vulnerability 
 * that existed in Solidity versions <0.8.0.
 * In these versions, arithmetic operations (addition, subtraction, multiplication)
-* did NOT revert on overflow/underflow — they silently wrapped around.
+* did NOT revert on overflow/underflow - they silently wrapped around.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -80,11 +101,11 @@ contract HulkRageToken {
 
 ### IronManSuit.sol (Underflow)
 
-**Context**: Read about `overflow/underflow` in <0.8.0 [docu here](#).
+**Context**: Read about `overflow/underflow` in <0.8.0 [`docu here`](#).
 * This contract demonstrates an Arithmetic Underflow vulnerability 
 * that existed in Solidity versions <0.8.0.
 * In these versions, subtraction on unsigned integers (uint) 
-* did NOT revert when going below zero — instead, it silently wrapped 
+* did NOT revert when going below zero - instead, it silently wrapped 
 * to a very large number (close to 2^256).
 
 
@@ -114,7 +135,6 @@ contract IronManSuit {
         energy[msg.sender] -= _drainAmount;
     }
 }
-
 ```
 
 ---
@@ -123,7 +143,7 @@ contract IronManSuit {
 
 ### HulkRageToken.sol
 
-**Context**:  Read about `unchecked` [docu here](#).
+**Context**:  Read about `unchecked` [`docu here`](#).
  * - Solidity ^0.8.0 introduced "checked arithmetic" by default.
  *   → Normally, `uint8 + uint8` that exceeds 255 will revert.
  * - Using `unchecked { ... }` disables these checks.
@@ -171,7 +191,7 @@ contract HulkRageToken {
 
 ### IronManSuit.sol
 
- **Context**: Read about `unchecked` [docu here](#).
+ **Context**: Read about `unchecked` [`docu here`](#).
  * - Solidity ^0.8.0 checks arithmetic by default.
  *   → Normally, `0 - 1` would revert with an error.
  * - Using `unchecked { ... }` disables this safety.
@@ -387,3 +407,7 @@ contract IronManSuitFixed {
 ## Note
 
 Like Hulk’s uncontrollable rage and Iron Man’s unstable suit, **unchecked arithmetic is dangerous**. Modern Solidity makes it safer, but auditors must stay vigilant for legacy contracts and unsafe use of `unchecked`.
+
+📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Arithmetic-Overflow-Underflow)
+
+---

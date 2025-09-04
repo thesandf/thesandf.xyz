@@ -1,15 +1,33 @@
 ---
-title: "Doctor Strange vs Dormammu — Reentrancy Exploit Explained (CEI)"
+title: "Doctor Strange vs Dormammu - Reentrancy Exploit in Solidity (CEI Case Study)."
 published: 2024-09-03
-description: "Using MCU storytelling to explain a classic reentrancy vulnerability in Solidity smart contracts. Includes vulnerable code, exploit, and fixed implementation."
+description: "Doctor Strange traps Dormammu in a time loop to explain Solidity’s reentrancy exploit. Learn how reentrancy works, how attackers drain treasuries, and how CEI + ReentrancyGuard fix it."
 image: /Reetrancy-CEI.jpg
 tags: [Solidity, Smart Contracts, Security, Reentrancy, MCU]
 category: Audit-Case-Study
 draft: false
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Doctor Strange vs Dormammu - Reentrancy Exploit in Solidity (CEI Case Study)",
+  "description": "Doctor Strange traps Dormammu in a time loop to explain Solidity’s reentrancy exploit. Learn how reentrancy works, how attackers drain treasuries, and how CEI + ReentrancyGuard fix it.",
+  "image": "https://multiv-rekt.vercel.app/Reetrancy-CEI.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "The Sandf"
+  },
+  "datePublished": "2024-09-03",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://multiv-rekt.vercel.app/posts/reentrancy-cei/"
+  }
+}
+</script>
 
-# 🌀 Doctor Strange vs Dormammu — Reentrancy Exploit Case Study
+# 🌀 Doctor Strange vs Dormammu - Reentrancy Exploit Case Study
 
 ## TL;DR
 
@@ -20,7 +38,7 @@ draft: false
 
 ---
 
-## 🎬 MCU Story 
+## 🎬 Story Time
 
 In *Doctor Strange (2016)*, Strange traps Dormammu in an infinite **time loop**. Just like Strange looping Dormammu until surrender, the `receive()` loop forces the treasury into repeated withdrawals until drained.
 
@@ -30,7 +48,7 @@ In smart contract security:
 * **Doctor Strange** = doesn’t attack directly → he uses the Time Stone.
 * **Time Stone (contract)** = has the receive() fallback and does the recursive withdraw() calls (the infinite loop).
 
-This mirrors the movie: Strange wins not by force, but by infinite repetition — just like a reentrancy attack.
+This mirrors the movie: Strange wins not by force, but by infinite repetition - just like a reentrancy attack.
 
 ---
 
@@ -74,7 +92,7 @@ contract DormammuTreasuryVulnerable {
         (bool sent,) = payable(msg.sender).call{value: amount}("");
         require(sent, "send failed");
 
-        // state update happens after the external call — attacker can reenter here
+        // state update happens after the external call - attacker can reenter here
         balanceOf[msg.sender] = 0;
     }
 
@@ -121,7 +139,7 @@ contract TimeStone {
         treasury.withdraw();
     }
 
-    /// @notice fallback — reenter while the treasury still has funds
+    /// @notice fallback - reenter while the treasury still has funds
     receive() external payable {
         // while the treasury still has at least `rewardAmount`, reenter withdraw()
         // careful: this condition keeps reentering until the treasury is drained or < rewardAmount

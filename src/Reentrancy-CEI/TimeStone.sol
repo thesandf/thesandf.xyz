@@ -25,7 +25,7 @@ contract TimeStone {
         treasury.withdraw();
     }
 
-    /// @notice fallback — reenter while the treasury still has funds
+    /// @notice fallback - reenter while the treasury still has funds
     receive() external payable {
         // while the treasury still has at least `rewardAmount`, reenter withdraw()
         // careful: this condition keeps reentering until the treasury is drained or < rewardAmount

@@ -1,13 +1,29 @@
 ---
-title: "Arithmetic Overflow & Underflow"
+title: "Arithmetic Overflow & Underflow in Solidity (With Examples & Fixes)."
 published: 2024-09-04
-description: "Official-style documentation page explaining overflow and underflow in Solidity, version differences, examples, security impact, and fixes."
+description: "Learn Solidity arithmetic overflow and underflow with code examples, version differences, and security fixes. Includes vulnerable <0.8.0 contracts and safe >=0.8.0 implementations."
 tags: [Solidity, Overflow, Underflow, SafeMath, Unchecked]
 category: Solidity Docs
 draft: false
 ---
 
-# Arithmetic Overflow & Underflow
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Arithmetic Overflow & Underflow in Solidity (With Examples & Fixes)",
+  "description": "Learn Solidity arithmetic overflow and underflow with code examples, version differences, and security fixes. Includes vulnerable <0.8.0 contracts and safe >=0.8.0 implementations.",
+  "author": { "@type": "Person", "name": "The Sandf" },
+  "datePublished": "2024-09-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://multiv-rekt.vercel.app/posts/solidity-docs/arithmetic-overflow-underflow-docs/"
+  }
+}
+</script>
+
+
+# Arithmetic Overflow & Underflow In Solidity
 
 ## 📖 Definition
 

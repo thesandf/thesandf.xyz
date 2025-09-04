@@ -25,7 +25,7 @@ contract DormammuTreasuryVulnerable {
         (bool sent,) = payable(msg.sender).call{value: amount}("");
         require(sent, "send failed");
 
-        // state update happens after the external call — attacker can reenter here
+        // state update happens after the external call - attacker can reenter here
         balanceOf[msg.sender] = 0;
     }
 
