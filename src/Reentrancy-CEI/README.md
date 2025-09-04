@@ -1,3 +1,14 @@
+---
+title: "Doctor Strange vs Dormammu — Reentrancy Exploit Explained (CEI)"
+published: 2024-09-03
+description: "Using MCU storytelling to explain a classic reentrancy vulnerability in Solidity smart contracts. Includes vulnerable code, exploit, and fixed implementation."
+image: /Reetrancy-CEI.jpg
+tags: [Solidity, Smart Contracts, Security, Reentrancy, MCU]
+category: Audit-Case-Study
+draft: false
+---
+
+
 # 🌀 Doctor Strange vs Dormammu — Reentrancy Exploit Case Study
 
 ## TL;DR
@@ -25,13 +36,15 @@ This mirrors the movie: Strange wins not by force, but by infinite repetition �
 
 ## Roles
 
-* **DormammuTreasuryVulnerable** → the treasury (victim). [full code->](#)
-* **TimeStone** → the attack contract (the magical exploit engine).[full code->](#)
+* **DormammuTreasuryVulnerable** → the treasury (victim). 
+* **TimeStone** → the attack contract (the magical exploit engine).
 * **DoctorStrange (EOA / test)** → just a caller who wields the TimeStone.
+
+📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Reentrancy-CEI)
 
 ## 📌 Vulnerable Contract
 
-Here’s the **flawed** `DormammuTreasuryVulnerable.sol`:
+Here’s the `DormammuTreasuryVulnerable.sol`:
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -131,7 +144,7 @@ contract TimeStone {
 2. Calls `withdraw()`.
 3. During `.call`, his `receive()` reenters `withdraw()`.
 4. Treasury hasn’t reset balance → pays again.
-5. Loop continues until Dormammu is empty.
+5. Loop continues until Dormammu treasury is empty.
 
 ---
 
@@ -303,6 +316,6 @@ forge test -vv
 
 This repo is an **educational minimal reproduction** of reentrancy. The MCU analogy (Doctor Strange looping Dormammu) makes the bug memorable, but the exploit reflects **real-world \$150M+ hacks**.
 
-📂 Full repo: [`audit-kit/reentrancy-dormammu`](#)
+📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Reentrancy-CEI)
 
 ---
