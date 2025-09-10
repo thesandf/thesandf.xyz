@@ -60,7 +60,7 @@ Thor ⚡️ enters the battlefield. His mission: **test the limits of Hulk’s r
 
 ---
 
-📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Arithmetic-Overflow-Underflow)
+::github{repo="thesandf/Void-Rekt"}
 
 ## Vulnerable Contracts (Pre-0.8.0)
 
@@ -404,10 +404,32 @@ contract IronManSuitFixed {
 
 ---
 
-## Note
+## References & Inspiration
 
+* **MCU:** *Thor: Ragnarok (2017)* – Thor battles Hulk’s uncontrollable rage, and Iron Man’s armor glitches under stress. Perfect metaphors for overflow and underflow.
+
+* **Historical Exploits:**
+
+  1. **BatchOverflow (2018)** – A famous ERC20 vulnerability where multiplication overflow allowed attackers to mint **unlimited tokens**.
+
+     * Root cause: Missing SafeMath checks in token logic.
+     * Impact: Billions of tokens created out of thin air.
+     * [PeckShield Postmortem](https://medium.com/@peckshield/peckshield-discovered-batchoverflow-bug-in-multiple-erc20-smart-contracts-8f60f173f4e7)
+
+  2. **Rubixi Ponzi (2016)** – Early contracts failed to account for safe arithmetic, enabling logic bypasses and unstable payouts.
+
+  3. **Fomo3D-style Games** – Relied on countdowns and counters that were exploitable via wraparound if unchecked.
+
+* **Modern Fixes:**
+
+  * **Solidity ≥0.8.0**: Arithmetic checked by default — no silent overflow/underflow.
+  * **`unchecked {}`**: Still dangerous if used carelessly.
+  * **OpenZeppelin SafeMath (pre-0.8.0)**: Historical go-to for preventing arithmetic bugs.
+---
+
+>[!NOTE]
 Like Hulk’s uncontrollable rage and Iron Man’s unstable suit, **unchecked arithmetic is dangerous**. Modern Solidity makes it safer, but auditors must stay vigilant for legacy contracts and unsafe use of `unchecked`.
 
-📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Arithmetic-Overflow-Underflow)
+::github{repo="thesandf/Void-Rekt"}
 
 ---

@@ -58,7 +58,7 @@ This mirrors the movie: Strange wins not by force, but by infinite repetition - 
 * **TimeStone** → the attack contract (the magical exploit engine).
 * **DoctorStrange (EOA / test)** → just a caller who wields the TimeStone.
 
-📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Reentrancy-CEI)
+::github{repo="thesandf/Void-Rekt"}
 
 ## 📌 Vulnerable Contract
 
@@ -102,8 +102,8 @@ contract DormammuTreasuryVulnerable {
     }
 }
 ```
-
-**Problem:** External call happens **before** state reset. If the recipient is a contract with a `receive()` or `fallback()`, it can call `withdraw()` again before its balance is cleared.
+>[!WARNING]
+External call happens **before** state reset. If the recipient is a contract with a `receive()` or `fallback()`, it can call `withdraw()` again before its balance is cleared.
 
 ---
 
@@ -156,13 +156,17 @@ contract TimeStone {
 }
 ```
 
-**Exploit Flow:**
 
-1. Strange deposits 1 ETH into Dormammu’s treasury.
-2. Calls `withdraw()`.
-3. During `.call`, his `receive()` reenters `withdraw()`.
-4. Treasury hasn’t reset balance → pays again.
-5. Loop continues until Dormammu treasury is empty.
+### 🌀 The Attack Flow (Vulnerable)
+
+1.  **Strange Deposits:** Doctor Strange deposits 1 ETH into the vulnerable treasury.
+2.  **Strange Withdraws:** Strange calls the `withdraw()` function on the treasury contract.
+3.  **Treasury Sends Ether:** The treasury sends the 1 ETH to Strange's contract **before** updating his balance to zero.
+4.  **Re-entry:** Strange's contract has a `receive()` fallback that is triggered by the incoming ETH. This fallback immediately calls the `withdraw()` function again.
+5.  **Infinite Loop:** Since Strange's balance was never reset, the treasury sends another 1 ETH. This loop continues until the treasury is empty.
+
+![Reentrancy Exploit Flow](/Reetrancy-CEI.svg)
+
 
 ---
 
@@ -286,8 +290,13 @@ contract ReentrancyDormammuTest is Test {
     }
 }
 ```
-In `test_Fixed_Resists_Reentrancy()`, note : why we expect revert:
-Because `nonReentrant` blocks recursive calls, the attack transaction itself reverts.
+In `test_Fixed_Resists_Reentrancy()`,
+why we expect revert:
+The reason the test for the fixed contract expects a revert is that the **`nonReentrant`** modifier on the `withdraw` function works exactly as it should.
+
+1.  The attacker's contract calls `withdraw()` for the first time. The `nonReentrant` modifier locks the function.
+2.  The attacker's fallback function is triggered and tries to call `withdraw()` again.
+3.  The `nonReentrant` modifier sees the function is still locked and immediately **reverts the entire transaction**.
 
 ---
 
@@ -312,7 +321,18 @@ Because `nonReentrant` blocks recursive calls, the attack transaction itself rev
 ## References & Inspiration
 
 * MCU: *Doctor Strange (2016)* → loop analogy.
-* Historical hacks: DAO (2016), Fei Protocol (2021).
+* Historical hacks: 
+#### 1. **GMX—\$40M Reentrancy Exploit (November 4, 2025)**
+
+* **Loss:** Approximately **\$40 million**
+* **Details:** The exploit stemmed from a reentrancy vulnerability in `executeDecreaseOrder()`. The function accepted **smart contract addresses** (instead of EOAs), enabling attackers to inject arbitrary reentry logic during callbacks.[Medium](https://blog.blockmagnates.com/40m-gmx-reentrancy-exploit-leads-week-of-smart-contract-failures-87086153ee78)
+* **Relevance to CEI:** External interactions were allowed **before proper state updates or input validation**, violating CEI principles. It underscores that even complex logic like order execution must respect CEI.
+
+#### 2. **Penpie (Pendle) — \$27M Exploit (September 3, 2024)**
+
+* **Loss:** Around **\$27 million** stolen
+* **Details:** Attackers deployed fake yield-bearing tokens (SY), created malicious pools, and triggered reentrancy to drain rewards. Successfully siphoned **\$15.7M** in one transaction, followed by two more that took **\$5.6M** each.[CryptoSlate](https://cryptoslate.com/penpie-exploited-for-27-million-in-reentrancy-attack/)
+* **CEI Breakdown:** The exploit shows how reentrancy can be combined with token manipulation—even fake tokens can be used to violate interaction and balance update order.
 * OpenZeppelin’s [ReentrancyGuard](https://docs.openzeppelin.com/contracts/5.x/api/utils#ReentrancyGuard).
 
 ---
@@ -330,10 +350,10 @@ forge test -vv
 
 ---
 
-##  Final Note
-
+> [!NOTE]
 This repo is an **educational minimal reproduction** of reentrancy. The MCU analogy (Doctor Strange looping Dormammu) makes the bug memorable, but the exploit reflects **real-world \$150M+ hacks**.
 
-📂 Full repo: [`thesandf/MultivRekt`](https://github.com/thesandf/Void-Rekt/tree/main/src/Reentrancy-CEI)
+
+::github{repo="thesandf/Void-Rekt"}
 
 ---
