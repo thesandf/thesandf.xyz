@@ -99,9 +99,9 @@ contract DoSBifrostTest is Test {
         assertEq(bifrostSafe.vaultOfAsgard(lokiUser), 0);
 
         // Assert balances
-        assertEq(address(thor).balance, 1 ether );
-        assertEq(address(jane).balance, 1 ether );
-        assertEq(address(lokiUser).balance, 1 ether );
+        assertEq(address(thor).balance, 1 ether);
+        assertEq(address(jane).balance, 1 ether);
+        assertEq(address(lokiUser).balance, 1 ether);
     }
 
     function test_CannotWithdrawWithoutDeposit() public {

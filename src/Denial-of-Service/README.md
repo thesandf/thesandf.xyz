@@ -59,7 +59,7 @@ In Solidity, this is a **Denial of Service** attack: one malicious participant m
 
 ::github{repo="thesandf/Void-Rekt"}
 
-## 📌 Vulnerable Contract — `BifrostBridgeVulnerable.sol`
+## 📌 Vulnerable Contract - `BifrostBridgeVulnerable.sol`
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -139,11 +139,11 @@ contract LokiTrickster {
 * The vulnerable `openBifrost()` loop grows linearly with the number of Asgardians.
 * Even if Loki **did not revert**, a long list of Asgardians could **exhaust gas**, causing a transaction failure.
 * Partial reverts during the loop **waste all gas spent so far**, effectively denying service.
-* Key takeaway: DoS isn’t just about stolen funds — it can also be about **making legitimate users’ transactions impossible**.
+* Key takeaway: DoS isn’t just about stolen funds - it can also be about **making legitimate users’ transactions impossible**.
 
 ---
 
-## Fixed Contract — `BifrostBridgeFixed.sol`
+## Fixed Contract - `BifrostBridgeFixed.sol`
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -183,7 +183,7 @@ contract BifrostBridgeFixed {
 
 ---
 
-##  Foundry Test — `DoSBifrost.t.sol`
+##  Foundry Test - `DoSBifrost.t.sol`
 
 ```solidity
 // SPDX-License-Identifier: MIT

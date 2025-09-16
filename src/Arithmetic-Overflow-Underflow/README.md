@@ -422,7 +422,7 @@ contract IronManSuitFixed {
 
 * **Modern Fixes:**
 
-  * **Solidity ≥0.8.0**: Arithmetic checked by default — no silent overflow/underflow.
+  * **Solidity ≥0.8.0**: Arithmetic checked by default - no silent overflow/underflow.
   * **`unchecked {}`**: Still dangerous if used carelessly.
   * **OpenZeppelin SafeMath (pre-0.8.0)**: Historical go-to for preventing arithmetic bugs.
 ---

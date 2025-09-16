@@ -18,7 +18,7 @@ contract BifrostBridgeFixed {
 
         vaultOfAsgard[msg.sender] = 0;
 
-        (bool sent, ) = payable(msg.sender).call{value: tribute}("");
+        (bool sent,) = payable(msg.sender).call{value: tribute}("");
         if (!sent) {
             // Restore balance so user can retry
             vaultOfAsgard[msg.sender] = tribute;

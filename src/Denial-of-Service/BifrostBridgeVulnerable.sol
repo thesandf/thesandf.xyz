@@ -26,7 +26,7 @@ contract BifrostBridgeVulnerable {
             uint256 tribute = vaultOfAsgard[traveler];
             if (tribute > 0) {
                 //  Loki can revert here and jam the bridge
-                (bool sent, ) = payable(traveler).call{value: tribute}("");
+                (bool sent,) = payable(traveler).call{value: tribute}("");
                 require(sent, "Bifrost jammed!");
                 vaultOfAsgard[traveler] = 0;
             }

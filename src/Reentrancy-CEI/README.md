@@ -322,17 +322,17 @@ The reason the test for the fixed contract expects a revert is that the **`nonRe
 
 * MCU: *Doctor Strange (2016)* → loop analogy.
 * Historical hacks: 
-#### 1. **GMX—\$40M Reentrancy Exploit (November 4, 2025)**
+#### 1. **GMX-\$40M Reentrancy Exploit (November 4, 2025)**
 
 * **Loss:** Approximately **\$40 million**
 * **Details:** The exploit stemmed from a reentrancy vulnerability in `executeDecreaseOrder()`. The function accepted **smart contract addresses** (instead of EOAs), enabling attackers to inject arbitrary reentry logic during callbacks.[Medium](https://blog.blockmagnates.com/40m-gmx-reentrancy-exploit-leads-week-of-smart-contract-failures-87086153ee78)
 * **Relevance to CEI:** External interactions were allowed **before proper state updates or input validation**, violating CEI principles. It underscores that even complex logic like order execution must respect CEI.
 
-#### 2. **Penpie (Pendle) — \$27M Exploit (September 3, 2024)**
+#### 2. **Penpie (Pendle) - \$27M Exploit (September 3, 2024)**
 
 * **Loss:** Around **\$27 million** stolen
 * **Details:** Attackers deployed fake yield-bearing tokens (SY), created malicious pools, and triggered reentrancy to drain rewards. Successfully siphoned **\$15.7M** in one transaction, followed by two more that took **\$5.6M** each.[CryptoSlate](https://cryptoslate.com/penpie-exploited-for-27-million-in-reentrancy-attack/)
-* **CEI Breakdown:** The exploit shows how reentrancy can be combined with token manipulation—even fake tokens can be used to violate interaction and balance update order.
+* **CEI Breakdown:** The exploit shows how reentrancy can be combined with token manipulation-even fake tokens can be used to violate interaction and balance update order.
 * OpenZeppelin’s [ReentrancyGuard](https://docs.openzeppelin.com/contracts/5.x/api/utils#ReentrancyGuard).
 
 ---
