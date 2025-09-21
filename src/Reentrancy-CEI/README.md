@@ -4,7 +4,7 @@ published: 2024-09-03
 description: "Doctor Strange traps Dormammu in a time loop to explain Solidity’s reentrancy exploit. Learn how reentrancy works, how attackers drain treasuries, and how CEI + ReentrancyGuard fix it."
 image: /Reetrancy-CEI.jpg
 tags: [Solidity, Smart Contracts, Security, Reentrancy, MCU]
-category: Audit-Case-Study
+category: MCU-Audit-Case-Study
 draft: false
 ---
 
@@ -62,7 +62,7 @@ This mirrors the movie: Strange wins not by force, but by infinite repetition - 
 
 ## 📌 Vulnerable Contract
 
-Here’s the `DormammuTreasuryVulnerable.sol`:
+### `DormammuTreasuryVulnerable.sol`:
 
 ```solidity
 // SPDX-License-Identifier: MIT

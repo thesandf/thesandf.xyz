@@ -3,7 +3,7 @@ title: "Thor vs The Bifrost - Denial of Service (DoS) in Solidity (Gas Griefing 
 published: 2024-09-10
 description: "Thor gets stranded when Loki clogs the Bifrost bridge. Learn how DoS in Solidity works, how attackers block withdrawals, and how patterns like pull-payments and gas-optimized loops prevent disaster."
 tags: [Gas-Griefing, Fallback-Revert, Smart Contract DoS Attack , Security, Denial-of-Service, MCU]
-category: Audit-Case-Study
+category: MCU-Audit-Case-Study
 draft: false
 ---
 

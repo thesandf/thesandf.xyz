@@ -4,7 +4,7 @@ published: 2024-09-04
 description: "Thor challenges Hulk’s rage and Iron Man’s power suit to explain arithmetic overflow & underflow in Solidity. Includes vulnerable code, exploits, and fixes."
 image: /overflow-underflow.jpg
 tags: [Solidity, Smart Contracts, Security, Arithmetic, MCU]
-category: Audit-Case-Study
+category: MCU-Audit-Case-Study
 draft: false
 ---
 

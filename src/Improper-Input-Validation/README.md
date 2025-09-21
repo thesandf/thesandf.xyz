@@ -4,7 +4,7 @@ published: 2024-09-18
 description: "Doctor Strange guards the Mirror Portal, but improper input validation lets villains sneak through exits. Inspired by a $41M real-world validator exploit, this case study shows how missing require checks drain treasuries - and how to fix them."
 image: /loki-like-that.gif
 tags: [Solidity, Smart Contracts, Security, InputValidation, MCU]
-category: Audit-Case-Study
+category: MCU-Audit-Case-Study
 draft: false
 ---
 
