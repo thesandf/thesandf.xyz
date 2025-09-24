@@ -1,31 +1,3 @@
----
-title: "Thor vs The Bifrost - Denial of Service (DoS) in Solidity (Gas Griefing Case Study)."
-published: 2024-09-10
-description: "Thor gets stranded when Loki clogs the Bifrost bridge. Learn how DoS in Solidity works, how attackers block withdrawals, and how patterns like pull-payments and gas-optimized loops prevent disaster."
-tags: [Gas-Griefing, Fallback-Revert, Smart Contract DoS Attack , Security, Denial-of-Service, MCU]
-category: MCU-Audit-Case-Study
-draft: false
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Thor vs The Bifrost - Denial of Service (DoS) in Solidity (Gas Griefing Case Study)",
-  "description": "Thor gets stranded when Loki clogs the Bifrost bridge. Learn how DoS in Solidity works, how attackers block withdrawals, and how patterns like pull-payments and gas-optimized loops prevent disaster.",
-  "image": "#",
-  "author": {
-    "@type": "Person",
-    "name": "The Sandf"
-  },
-  "datePublished": "2024-09-10",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/denial-of-service/"
-  }
-}
-</script>
-
 # ⚡ Thor vs The Bifrost - DoS Case Study
 
 ## TL;DR
@@ -36,6 +8,8 @@ draft: false
 * **Fix:** Use **pull-payments** instead of looped mass payouts; avoid unbounded iterations.
 
 ---
+
+Check out the live version of the website [live here](https://www.thesandf.xyz/posts/denial-of-service/).
 
 ## 🎬 Story Time
 
@@ -57,13 +31,13 @@ In Solidity, this is a **Denial of Service** attack: one malicious participant m
 
 ---
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ## 📌 Vulnerable Contract - `BifrostBridgeVulnerable.sol`
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /*
    The BifrostBridge pays Asgardians their Ether by looping through all citizens.
@@ -113,7 +87,7 @@ One bad actor can **block everyone** by reverting in their fallback. Thor is str
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /// @title Loki jams the Bifrost by reverting on receive
 contract LokiTrickster {
@@ -130,7 +104,7 @@ contract LokiTrickster {
 3. Loki’s contract reverts → the entire bridge halts.
 4. Thor and others are stranded with their funds stuck.
 
-![DoS Exploit Flow](/DoS.svg)
+![DoS Exploit Flow](../../public/DoS.svg)
 
 ---
 
@@ -147,7 +121,7 @@ contract LokiTrickster {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /// @title Safe Bifrost with resilient withdrawals
 contract BifrostBridgeFixed {
@@ -187,7 +161,7 @@ contract BifrostBridgeFixed {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
 import {BifrostBridgeVulnerable} from "../../src/Denial-of-Service/BifrostBridgeVulnerable.sol";
@@ -357,7 +331,7 @@ forge test -vv
 > [!NOTE]
 Educational minimal reproduction. MCU analogy (Loki clogging Bifrost) makes it memorable, but reflects **real-world DoS scenarios** blocking legitimate users’ withdrawals or actions.
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---
 

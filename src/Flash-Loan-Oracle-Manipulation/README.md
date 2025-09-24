@@ -1,36 +1,3 @@
----
-title: "Ant-Man and the Giant Loan – Flash-Loan Oracle Manipulation"
-published: 2024-09-13
-updated: 2025-09-19
-description: "Ant-Man borrows massive funds from the Quantum Realm, manipulates prices on a naive PymDEX, and walks away rich. Learn how flash loans + naive on-chain price oracles lead to instant drains, and how to fix them."
-image: /Ant-Man-and-the-Giant-Loan.png
-tags: [Solidity, Smart Contracts, Security, FlashLoan, OracleManipulation, MCU]
-category: MCU-Audit-Case-Study
-draft: false
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Ant-Man and the Giant Loan – Flash-Loan Oracle Manipulation",
-  "description": "Ant-Man borrows massive funds from the Quantum Realm, manipulates prices on a naive PymDEX, and walks away rich. Learn how flash loans + naive on-chain price oracles lead to instant drains, and how to fix them.",
-  "image": "https://multiv-rekt.vercel.app/Ant-Man-and-the-Giant-Loan.png",
-  "author": {
-    "@type": "Person",
-    "name": "The Sandf"
-  },
-  "datePublished": "2024-09-18",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/flash-loan-oracle-manipulation/"
-  }
-}
-</script>
-
----
-
-
 # Ant-Man and the Giant Loan - MCU Edition
 
 ## TL;DR
@@ -44,6 +11,7 @@ draft: false
 
 ---
 
+Check out the live version of the website [live here](https://www.thesandf.xyz/posts/flash-loan-oracle-manipulation/).
 
 ## 🎬 Story Time
 
@@ -82,7 +50,7 @@ This ensures the exploit contract can interact with the DEX and vault as needed,
 
 ---
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 
 ## Attack Flow
@@ -129,7 +97,7 @@ This ensures the exploit contract can interact with the DEX and vault as needed,
   * Over-borrow succeeds → vault drained atomically.
 
 
-![Flash Loan Exploit Flow](/Flash-Loan.svg)
+![Flash Loan Exploit Flow](../../public/Flash-Loan.svg)
 
 ## Minimal educational code 
 
@@ -140,7 +108,7 @@ Intentionally small/simplified for clarity - **do not** copy to production uncha
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /// @notice Minimal ERC20 for tests (mintable)
 /// @dev For educational/demo use only. No access control, not production safe.
@@ -195,7 +163,7 @@ contract MockERC20 {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import "./MockERC20.sol";
 
@@ -232,7 +200,7 @@ contract QuantumRealmBank {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {MockERC20} from "./MockERC20.sol";
 
@@ -300,7 +268,7 @@ This is just a super-simple DEX, kind of like a baby version of Uniswap. It keep
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {MockERC20} from "./MockERC20.sol";
 
@@ -363,7 +331,7 @@ Think of this like a lending pool (similar to Compound or Aave), but with one bi
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {PymDEX} from "./PymDEX.sol";
 import {StarkVault} from "./StarkVault.sol";
@@ -523,7 +491,7 @@ All of this happens inside one transaction, and at the end, the flash loan is re
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {Test, console} from "forge-std/Test.sol";
 import {MockERC20} from "../../src/Flash-Loan-Oracle-Manipulation/MockERC20.sol";
@@ -673,7 +641,7 @@ Relying on a simple, on-chain spot price is like building a vault with a lock th
 
 ---
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---
 

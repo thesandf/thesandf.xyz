@@ -17,7 +17,7 @@ draft: false
   "datePublished": "2024-09-04",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/solidity-docs/arithmetic-overflow-underflow-docs/"
+    "@id": "https://thesandf.xyz/posts/solidity-docs/arithmetic-overflow-underflow-docs/"
   }
 }
 </script>
@@ -90,7 +90,7 @@ contract OverflowUnderflowExample {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract SafeArithmetic {
     uint8 public value;

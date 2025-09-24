@@ -1,32 +1,3 @@
----
-title: "Doctor Strange vs Dormammu - Reentrancy Exploit in Solidity (CEI Case Study)."
-published: 2024-09-03
-description: "Doctor Strange traps Dormammu in a time loop to explain Solidity’s reentrancy exploit. Learn how reentrancy works, how attackers drain treasuries, and how CEI + ReentrancyGuard fix it."
-image: /Reetrancy-CEI.jpg
-tags: [Solidity, Smart Contracts, Security, Reentrancy, MCU]
-category: MCU-Audit-Case-Study
-draft: false
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Doctor Strange vs Dormammu - Reentrancy Exploit in Solidity (CEI Case Study)",
-  "description": "Doctor Strange traps Dormammu in a time loop to explain Solidity’s reentrancy exploit. Learn how reentrancy works, how attackers drain treasuries, and how CEI + ReentrancyGuard fix it.",
-  "image": "https://multiv-rekt.vercel.app/Reetrancy-CEI.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "The Sandf"
-  },
-  "datePublished": "2024-09-03",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/reentrancy-cei/"
-  }
-}
-</script>
-
 # 🌀 Doctor Strange vs Dormammu - Reentrancy Exploit Case Study
 
 ## TL;DR
@@ -37,6 +8,7 @@ draft: false
 * **Fix:** Apply CEI (update state before external calls) and use a reentrancy guard.
 
 ---
+Check out the live version of the website [live here](https://www.thesandf.xyz/posts/reentrancy-cei/).
 
 ## 🎬 Story Time
 
@@ -58,15 +30,15 @@ This mirrors the movie: Strange wins not by force, but by infinite repetition - 
 * **TimeStone** → the attack contract (the magical exploit engine).
 * **DoctorStrange (EOA / test)** → just a caller who wields the TimeStone.
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ## 📌 Vulnerable Contract
 
-### `DormammuTreasuryVulnerable.sol`:
+Here’s the `DormammuTreasuryVulnerable.sol`:
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /*
   Dormammu (the treasury) holds Ether for citizens and pays a reward on withdraw.
@@ -113,7 +85,7 @@ Attacker = **TimeStone.sol**:
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {DormammuTreasuryVulnerable} from "../../src/Reentrancy-CEI/DormammuTreasuryVulnerable.sol";
 
@@ -165,7 +137,7 @@ contract TimeStone {
 4.  **Re-entry:** Strange's contract has a `receive()` fallback that is triggered by the incoming ETH. This fallback immediately calls the `withdraw()` function again.
 5.  **Infinite Loop:** Since Strange's balance was never reset, the treasury sends another 1 ETH. This loop continues until the treasury is empty.
 
-![Reentrancy Exploit Flow](/Reetrancy-CEI.svg)
+![Reentrancy Exploit Flow](../../public/Reetrancy-CEI.svg)
 
 
 ---
@@ -176,7 +148,7 @@ contract TimeStone {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
@@ -219,7 +191,7 @@ contract DormammuTreasuryFixed is ReentrancyGuard {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
 import {DormammuTreasuryVulnerable} from "../../src/Reentrancy-CEI/DormammuTreasuryVulnerable.sol";
@@ -354,6 +326,6 @@ forge test -vv
 This repo is an **educational minimal reproduction** of reentrancy. The MCU analogy (Doctor Strange looping Dormammu) makes the bug memorable, but the exploit reflects **real-world \$150M+ hacks**.
 
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---

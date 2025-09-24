@@ -1,33 +1,3 @@
----
-title: "Thor vs Hulk & Iron Man - Arithmetic Overflow & Underflow in Solidity"
-published: 2024-09-04
-description: "Thor challenges Hulk’s rage and Iron Man’s power suit to explain arithmetic overflow & underflow in Solidity. Includes vulnerable code, exploits, and fixes."
-image: /overflow-underflow.jpg
-tags: [Solidity, Smart Contracts, Security, Arithmetic, MCU]
-category: MCU-Audit-Case-Study
-draft: false
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Thor vs Hulk & Iron Man - Arithmetic Overflow & Underflow in Solidity",
-  "description": "Thor challenges Hulk’s rage and Iron Man’s power suit to explain arithmetic overflow & underflow in Solidity. Includes vulnerable code, exploits, and fixes.",
-  "image": "https://multiv-rekt.vercel.app/overflow-underflow.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "The Sandf"
-  },
-  "datePublished": "2024-09-04",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/arithmetic-overflow-underflow/"
-  }
-}
-</script>
-
-
 # ⚡ Thor Breaks Math - Arithmetic Overflow & Underflow in Solidity
 
 **MCU Analogy: The Hulk’s Rage vs. The Iron Man Suit**
@@ -48,6 +18,8 @@ This case study illustrates both versions through an MCU analogy:
 
 ---
 
+Check out the live version of the website [live here](https://www.thesandf.xyz/posts/arithmetic-overflow-underflow/).
+
 ##  🎬 Story Time - The Battle
 
 Thor ⚡️ enters the battlefield. His mission: **test the limits of Hulk’s rage and Iron Man’s power suit**.
@@ -60,7 +32,7 @@ Thor ⚡️ enters the battlefield. His mission: **test the limits of Hulk’s r
 
 ---
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ## Vulnerable Contracts (Pre-0.8.0)
 
@@ -151,7 +123,7 @@ contract IronManSuit {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 /*
  * Demonstrates an arithmetic **overflow** vulnerability.
@@ -199,7 +171,7 @@ contract HulkRageToken {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 /*
  * Demonstrates an arithmetic **underflow** vulnerability.
  *
@@ -246,7 +218,7 @@ contract IronManSuit {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {HulkRageToken} from "./Post/HulkRageToken.sol";
 import {IronManSuit} from "./Post/IronManSuit.sol";
@@ -282,7 +254,7 @@ contract ThorBreaker {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
 import {HulkRageToken} from "../../src/Arithmetic-Overflow-Underflow/Post/HulkRageToken.sol";
@@ -338,7 +310,7 @@ You’ll see logs like:
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract HulkRageTokenFixed {
     mapping(address => uint8) public rage;
@@ -355,7 +327,7 @@ contract HulkRageTokenFixed {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract IronManSuitFixed {
     mapping(address => uint256) public energy;
@@ -430,6 +402,6 @@ contract IronManSuitFixed {
 >[!NOTE]
 Like Hulk’s uncontrollable rage and Iron Man’s unstable suit, **unchecked arithmetic is dangerous**. Modern Solidity makes it safer, but auditors must stay vigilant for legacy contracts and unsafe use of `unchecked`.
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---

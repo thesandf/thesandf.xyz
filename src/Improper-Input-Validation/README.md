@@ -1,32 +1,3 @@
----
-title: "Doctor Strange and the Mirror Portal – Improper Input Validation (Case Study)"
-published: 2024-09-18
-description: "Doctor Strange guards the Mirror Portal, but improper input validation lets villains sneak through exits. Inspired by a $41M real-world validator exploit, this case study shows how missing require checks drain treasuries - and how to fix them."
-image: /loki-like-that.gif
-tags: [Solidity, Smart Contracts, Security, InputValidation, MCU]
-category: MCU-Audit-Case-Study
-draft: false
----
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Doctor Strange and the Mirror Portal – Improper Input Validation (Case Study)",
-  "description": "Doctor Strange guards the Mirror Portal, but improper input validation lets villains sneak through exits. Inspired by a $41M validator exploit, this MCU case study shows how attackers impersonate heroes - and how to fix it.",
-  "image": "https://multiv-rekt.vercel.app/loki-like-that.gif",
-  "author": {
-    "@type": "Person",
-    "name": "The Sandf"
-  },
-  "datePublished": "2024-09-18",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/improper-input-validation/"
-  }
-}
-</script>
-
 # Loki Impersonates Iron Man – Input Validation Exploit Case Study
 
 ## TL;DR
@@ -37,6 +8,7 @@ draft: false
 - **Fix:** Require proper identity/authentication (consensus proof, signatures) before allowing exits.  
 
 ---
+Check out the live version of the website [live here](https://www.thesandf.xyz/posts/improper-input-validation/).
 
 ## 🎬 Story Time
 
@@ -50,7 +22,7 @@ This mirrors a real smart contract bug: missing **input validation** on withdraw
 
 > *Fun fact: Loki doesn’t appear in **Doctor Strange (2016)**, but a post-credits scene shows Strange agreeing to help Thor search for Odin - with Loki tagging along. Loki’s impersonator skills make him the perfect metaphor here.*  
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---
 
@@ -58,7 +30,7 @@ This mirrors a real smart contract bug: missing **input validation** on withdraw
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract MirrorDimensionPortal {
     mapping(address => uint256) public balances;
@@ -91,7 +63,7 @@ Attacker contract:
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import {MirrorDimensionPortal} from "./MirrorDimensionPortal.sol";
 
@@ -122,7 +94,7 @@ contract LokiAttack {
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract MirrorDimensionPortalFixed {
     mapping(address => uint256) public balances;
@@ -188,7 +160,7 @@ Note: This demo uses `.call` for clarity and to show a realistic transfer. For p
 ## Test Snippet (Foundry)
 
 ```solidity
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 import "forge-std/Test.sol";
 import "../../src/Improper-Input-Validation/MirrorDimensionPortal.sol";
 import "../../src/Improper-Input-Validation/LokiAttack.sol";
@@ -239,6 +211,6 @@ Doctor Strange’s lesson for Solidity devs:
 This repo is an **educational minimal reproduction** of reentrancy. The MCU analogy (Loki Impersonates Iron Man) makes the bug memorable, but the exploit reflects **real-world \$41M hacks**.
 
 
-::github{repo="thesandf/Void-Rekt"}
+::github{repo="thesandf/thesandf.xyz"}
 
 ---

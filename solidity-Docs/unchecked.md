@@ -17,7 +17,7 @@ draft: false
   "datePublished": "2024-09-04",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://multiv-rekt.vercel.app/posts/solidity-docs/unchecked/"
+    "@id": "https://thesandf.xyz/posts/solidity-docs/unchecked/"
   }
 }
 </script>
@@ -45,7 +45,7 @@ draft: false
 
 ### Default (checked by Solidity ≥0.8.0)
 ```solidity
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract SafeExample {
     uint8 public value = 255;
@@ -60,7 +60,7 @@ contract SafeExample {
 ### Using `unchecked`
 
 ```solidity
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract UncheckedExample {
     uint8 public value = 255;
@@ -90,7 +90,7 @@ contract UncheckedExample {
 ##  Gas Optimization Example
 
 ```solidity
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 contract LoopExample {
     function sum(uint256 n) public pure returns (uint256 total) {
