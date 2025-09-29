@@ -32,8 +32,8 @@ This repo is my **multiverse HQ**-a place to:
 2. **Explore the Repo**
 
    * 📂 **/Multiverse-Case-Studies** → Breakdown of DeFi hacks
-   * 📂 **/ctf-solutions** → CTF write-ups & exploits like [Hans-Challenges](https://www.thesandf.xyz/posts/ctf-solutions/Hans-CTF-Challenges/) and more . 
-   * 📂 **/re-hacks**                     → Reproducing Hacks like [DefiHackLabs](https://www.thesandf.xyz/posts/re-hacks/DefiHackLabs/) and more. 
+   * 📂 **/ctf-solutions** → CTF write-ups & exploits like [Def-CTF-Challenges](https://www.thesandf.xyz/posts/ctf-solutions/defi-ctf-challenges/) and more . 
+   * 📂 **/re-hacks**                     → Reproducing Hacks like [DefiHackLabs](https://www.thesandf.xyz/posts/re-hacks/defi-hack-labs/) and more. 
    * 📂 **/tools** → Security scripts - coming soon.  
    * 📂 **/resources** → Audit checklists & learning material - coming soon.  
 
