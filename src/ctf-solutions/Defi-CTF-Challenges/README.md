@@ -1,6 +1,6 @@
-# Hans CTF Challenges – DeFiHub Protocol
+# Defi CTF Challenges – DeFiHub Protocol
 
-Welcome to **Hans CTF Challenges**, where Web3 security meets hands-on learning! 🦸‍♂️
+Welcome to **Defi CTF Challenges**, where Web3 security meets hands-on learning! 🦸‍♂️
 This repository provides **vulnerable smart contracts** from the DeFiHub protocol for auditing, testing, and skill-building. Created By [Hans Friese](https://x.com/hansfriese).
 
 *Full credit to [Hans Friese](https://x.com/hansfriese), co-founder of [Cyfrin](https://cyfrin.com).*
@@ -147,7 +147,7 @@ Use this Markdown template:
 ### 4. Submit Your Report
 
 * **GitHub Issues:** Use the audit template
-* **GitHub Discussions:** Post in “Hans CTF Challenges” category
+* **GitHub Discussions:** Post in “Defi CTF Challenges” category
 * **X (@THE_SANDF):** Share PoC snippets
 
 **Rules:** Conduct blind audits; do **not reference solved external issues**.
@@ -181,7 +181,7 @@ forge test -vvv
 
 ## Ready to Battle Bugs?
 
-Audit **Hans CTF Challenges**, submit reports via GitHub, or tag **@THE_SANDF** on X.
+Audit **Defi CTF Challenges**, submit reports via GitHub, or tag **@THE_SANDF** on X.
 Secure the Web3 multiverse! 🌐
 
 🏗️ [Start the Challenge](https://github.com/thesandf/thesandf.xyz/tree/main/src/ctf-solutions/Defi-CTF-Challenges) | 💬 [Discuss](https://github.com/thesandf/thesandf.xyz/discussions) | Follow [@THE_SANDF](https://x.com/THE_SANDF)
