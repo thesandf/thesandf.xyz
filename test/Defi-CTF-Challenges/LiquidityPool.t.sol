@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../../src/ctf-solutions/Hans-CTF-Challenges/LiquidityPool.sol";
+import "../../src/ctf-solutions/Defi-CTF-Challenges/LiquidityPool.sol";
 
 contract LiquidityPoolTest is Test {
     LiquidityPool public pool;

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../../src/ctf-solutions/Hans-CTF-Challenges/GovernanceToken.sol";
+import "../../src/ctf-solutions/Defi-CTF-Challenges/GovernanceToken.sol";
 
 contract GovernanceTokenTest is Test {
     GovernanceToken public token;

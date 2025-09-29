@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../../src/ctf-solutions/Hans-CTF-Challenges/StableCoin.sol";
+import "../../src/ctf-solutions/Defi-CTF-Challenges/StableCoin.sol";
 
 contract StableCoinTest is Test {
     StableCoin public stablecoin;
