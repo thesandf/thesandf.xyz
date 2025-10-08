@@ -21,7 +21,7 @@ contract DormammuTreasuryVulnerable {
         uint256 amount = balanceOf[msg.sender];
         require(amount > 0, "no balance");
 
-        //  Vulnerable: external call happens BEFORE state update
+        // 🛑 Vulnerable: external call happens BEFORE state update
         (bool sent,) = payable(msg.sender).call{value: amount}("");
         require(sent, "send failed");
 

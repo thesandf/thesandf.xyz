@@ -90,10 +90,7 @@ contract LiquidityPool is Ownable {
         require(shareToken.balanceOf(msg.sender) >= shares, "Insufficient shares");
 
         // Enforce withdrawal delay for security
-        require(
-            block.timestamp >= lastDepositTime[msg.sender] + WITHDRAWAL_DELAY,
-            "Withdrawal delay not met"
-        );
+        require(block.timestamp >= lastDepositTime[msg.sender] + WITHDRAWAL_DELAY, "Withdrawal delay not met");
 
         // Calculate ETH amount based on proportional share of pool
         uint256 amount = shares * address(this).balance / shareToken.totalSupply();
@@ -116,12 +113,7 @@ contract LiquidityPool is Ownable {
      * @param nonce The current nonce for replay protection
      * @param signature Cryptographic signature proving authorization
      */
-    function claimReward(
-        address user,
-        uint256 amount,
-        uint256 nonce,
-        bytes memory signature
-    ) external {
+    function claimReward(address user, uint256 amount, uint256 nonce, bytes memory signature) external {
         require(rewards[user] >= amount, "Insufficient rewards");
         require(nonces[user] == nonce, "Invalid nonce");
 

@@ -79,18 +79,10 @@ contract TokenStreamer {
 
     // Events for tracking stream activities
     event StreamCreated(
-        uint256 indexed streamId,
-        address indexed depositor,
-        address indexed recipient,
-        uint256 amount,
-        uint256 duration
+        uint256 indexed streamId, address indexed depositor, address indexed recipient, uint256 amount, uint256 duration
     );
-    event StreamDeposit(
-        uint256 indexed streamId, address indexed depositor, uint256 amount
-    );
-    event StreamWithdrawal(
-        uint256 indexed streamId, address indexed user, uint256 amount
-    );
+    event StreamDeposit(uint256 indexed streamId, address indexed depositor, uint256 amount);
+    event StreamWithdrawal(uint256 indexed streamId, address indexed user, uint256 amount);
 
     // Errors
     error InvalidTokenAddress();
@@ -119,19 +111,14 @@ contract TokenStreamer {
      * @param duration The duration over which tokens will be streamed
      * @return streamId The ID of the newly created stream
      */
-    function createStream(address to, uint256 amount, uint256 duration)
-        external
-        returns (uint256 streamId)
-    {
+    function createStream(address to, uint256 amount, uint256 duration) external returns (uint256 streamId) {
         if (to == address(0)) revert InvalidRecipient();
         if (amount == 0) revert InvalidAmount();
         if (duration < STREAM_MIN_DURATION || duration > STREAM_MAX_DURATION) {
             revert InvalidStreamDuration();
         }
 
-        require(
-            token.transferFrom(msg.sender, address(this), amount), "Transfer failed"
-        );
+        require(token.transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
         streamId = nextStreamId++;
         streams[streamId] = Stream({
@@ -159,9 +146,7 @@ contract TokenStreamer {
         if (amount == 0) revert InvalidAmount();
         if (block.timestamp >= stream.endTime) revert StreamEnded();
 
-        require(
-            token.transferFrom(msg.sender, address(this), amount), "Transfer failed"
-        );
+        require(token.transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
         stream.totalDeposited += amount;
         stream.lastUpdateTime = block.timestamp;
@@ -194,11 +179,7 @@ contract TokenStreamer {
      * @param streamId The ID of the stream to check
      * @return available The amount of tokens available for withdrawal
      */
-    function getAvailableTokens(uint256 streamId)
-        public
-        view
-        returns (uint256 available)
-    {
+    function getAvailableTokens(uint256 streamId) public view returns (uint256 available) {
         Stream memory stream = streams[streamId];
         if (!stream.exists) return 0;
 
@@ -258,11 +239,7 @@ contract TokenStreamer {
      * @param user The address to query streams for
      * @return streamIds Array of stream IDs belonging to the user
      */
-    function getUserStreams(address user)
-        external
-        view
-        returns (uint256[] memory streamIds)
-    {
+    function getUserStreams(address user) external view returns (uint256[] memory streamIds) {
         return userStreams[user];
     }
 

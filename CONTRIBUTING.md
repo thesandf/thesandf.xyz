@@ -1,4 +1,4 @@
-# Contributing to TheSandF.xyz 🌌
+# Contributing to TheSandF.xyz 🏗️
 
 Welcome to **TheSandF.xyz**, the multiverse hub for Web3 security! Whether you’re a dev, auditor, or blockchain enthusiast, we’re thrilled to have you join the fight against DeFi’s darkest exploits. 🗡️ Inspired by MCU showdowns, anime arcs, and epic boss battles, this repo is all about analyzing hacks, sharing fixes, and building a safer Web3.
 

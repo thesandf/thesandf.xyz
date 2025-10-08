@@ -28,11 +28,20 @@ This repo is my **multiverse HQ**-a place to:
    cd thesandf.xyz
    forge test -vvv
    ```
+### Optional: DeFiHackLabs Submodule
+This repo originally referenced the [DeFiHackLabs](https://github.com/SunWeb3Sec/DeFiHackLabs) repo.
+It’s not required for `forge build` or `forge test`.
+
+If you want to include it for reference:
+```bash
+git submodule update --init --recursive
+```
+
 
 2. **Explore the Repo**
 
    * 📂 **/Multiverse-Case-Studies** → Breakdown of DeFi hacks
-   * 📂 **/ctf-solutions** → CTF write-ups & exploits like [Def-CTF-Challenges](https://www.thesandf.xyz/posts/ctf-solutions/defi-ctf-challenges/) and more . 
+   * 📂 **/ctf-solutions** → CTF write-ups & exploits like [Defi-CTF-Challenges](https://www.thesandf.xyz/posts/ctf-solutions/defi-ctf-challenges/) , [DAIP Audit Challenge](https://www.thesandf.xyz/posts/ctf-solutions/daip-audit-challenge/)  . 
    * 📂 **/re-hacks**                     → Reproducing Hacks like [DefiHackLabs](https://www.thesandf.xyz/posts/re-hacks/defi-hack-labs/) and more. 
    * 📂 **/tools** → Security scripts - coming soon.  
    * 📂 **/resources** → Audit checklists & learning material - coming soon.  
