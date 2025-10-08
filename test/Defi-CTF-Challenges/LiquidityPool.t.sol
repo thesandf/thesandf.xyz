@@ -72,8 +72,7 @@ contract LiquidityPoolTest is Test {
         // Calculate expected shares for second deposit
         // When second deposit happens: totalSupply = 1 ether, new balance will be 1.5 ether
         // shares = (0.5 * 1) / 1.5 = 0.333... ether
-        uint256 expectedShares =
-            (secondDeposit * firstDeposit) / (firstDeposit + secondDeposit);
+        uint256 expectedShares = (secondDeposit * firstDeposit) / (firstDeposit + secondDeposit);
 
         assertEq(shareToken.balanceOf(user1), firstDeposit);
         assertEq(shareToken.balanceOf(user2), expectedShares);
@@ -272,8 +271,7 @@ contract LiquidityPoolTest is Test {
         // Balance before second deposit was 11 ether (1 original + 10 donated)
         // So shares = (1 ether * 1 ether) / 12 ether = 1/12 ether
         uint256 totalSupplyBefore = initialDeposit; // 1 ether
-        uint256 expectedShares = (secondDeposit * totalSupplyBefore)
-            / (balanceBeforeSecondDeposit + secondDeposit);
+        uint256 expectedShares = (secondDeposit * totalSupplyBefore) / (balanceBeforeSecondDeposit + secondDeposit);
 
         assertEq(user2Shares, expectedShares);
         assertLt(user2Shares, secondDeposit); // Gets fewer shares due to donation attack

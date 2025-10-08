@@ -189,7 +189,7 @@ contract DestinationBridge {
 ## Attack Flow: Visualized
 This Mermaid flowchart illustrates Doctor Strange’s signature forgery and replay exploit:
 
-![ replay Exploit Flow](/Replay-Bridge.svg)
+![replay Exploit Flow](/Replay-Bridge.svg)
 
 ## Proof of Exploit: Foundry Test
 The following tests demonstrate the signature forgery and replay vulnerabilities using Foundry.
