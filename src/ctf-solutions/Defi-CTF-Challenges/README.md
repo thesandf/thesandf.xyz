@@ -117,8 +117,8 @@ These issues are intentional for **learning and auditing practice**.
 ### 1. Set Up Environment
 
 ```bash
-git clone https://github.com/thesandf/thesandf.xyz.git
-cd thesandf.xyz
+git clone https://github.com/thesandf/thesandf.com.git
+cd thesandf.com
 forge test -vvv
 ```
 
@@ -173,7 +173,7 @@ forge test -vvv
 
 ## Rewards & Recognition
 
-* **Recognition:** Featured on **thesandf.xyz “Hall of Heroes”**
+* **Recognition:** Featured on **thesandf.com “Hall of Heroes”**
 * **Community Perks:** Early access to case studies, badges, beta audit program invites
 * **Portfolio Value:** Strong reports boost your Web3 career prospects
 
@@ -184,6 +184,6 @@ forge test -vvv
 Audit **Defi CTF Challenges**, submit reports via GitHub, or tag **@THE_SANDF** on X.
 Secure the Web3 multiverse! 🌐
 
-🏗️ [Start the Challenge](https://github.com/thesandf/thesandf.xyz/tree/main/src/ctf-solutions/Defi-CTF-Challenges) | 💬 [Discuss](https://github.com/thesandf/thesandf.xyz/discussions) | Follow [@THE_SANDF](https://x.com/THE_SANDF)
+🏗️ [Start the Challenge](https://github.com/thesandf/thesandf.com/tree/main/src/ctf-solutions/Defi-CTF-Challenges) | 💬 [Discuss](https://github.com/thesandf/thesandf.com/discussions) | Follow [@THE_SANDF](https://x.com/THE_SANDF)
 
 ---

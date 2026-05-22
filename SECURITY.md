@@ -1,4 +1,4 @@
-# Security Policy - TheSandF.xyz
+# Security Policy - thesandf.com
 
 ## Reporting a Vulnerability
 Thank you for responsibly disclosing security issues - we take them seriously.

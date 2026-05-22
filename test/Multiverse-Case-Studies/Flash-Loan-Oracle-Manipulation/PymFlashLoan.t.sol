@@ -6,8 +6,9 @@ import {MockERC20} from "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-
 import {PymDEX} from "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-Manipulation/PymDEX.sol";
 import {StarkVault} from "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-Manipulation/StarkVault.sol";
 import {AntManExploit} from "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-Manipulation/AntManExploit.sol";
-import {QuantumRealmBank} from
-    "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-Manipulation/QuantumRealmBank.sol";
+import {
+    QuantumRealmBank
+} from "../../../src/Multiverse-Case-Studies/Flash-Loan-Oracle-Manipulation/QuantumRealmBank.sol";
 
 contract PymFlashLoan is Test {
     MockERC20 tokenA;

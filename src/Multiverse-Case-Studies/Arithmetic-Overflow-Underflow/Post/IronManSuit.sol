@@ -26,7 +26,7 @@ contract IronManSuit {
 
     /*
      * Drain caller’s energy.
-     * 
+     *
      * ⚠️ Vulnerability:
      * - No check if user has enough energy.
      * - Underflow causes wraparound to a massive value.

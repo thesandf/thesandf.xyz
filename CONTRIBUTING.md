@@ -1,18 +1,18 @@
-# Contributing to TheSandF.xyz 🏗️
+# Contributing to thesandf.com 🏗️
 
-Welcome to **TheSandF.xyz**, the multiverse hub for Web3 security! Whether you’re a dev, auditor, or blockchain enthusiast, we’re thrilled to have you join the fight against DeFi’s darkest exploits. 🗡️ Inspired by MCU showdowns, anime arcs, and epic boss battles, this repo is all about analyzing hacks, sharing fixes, and building a safer Web3.
+Welcome to **thesandf.com**, the multiverse hub for Web3 security! Whether you’re a dev, auditor, or blockchain enthusiast, we’re thrilled to have you join the fight against DeFi’s darkest exploits. 🗡️ Inspired by MCU showdowns, anime arcs, and epic boss battles, this repo is all about analyzing hacks, sharing fixes, and building a safer Web3.
 
 By contributing, you’re helping us assemble the next generation of Web3 defenders. Let’s make the blockchain as secure as Vibranium! 
 
 ## How to Contribute
 
 1. **Star the Repo** ⭐: Show some love to keep the multiverse thriving!
-2. **Explore Issues**: Check the [Issues tab](https://github.com/thesandf/thesandf.xyz/issues) for open tasks, from case studies to tool improvements.
+2. **Explore Issues**: Check the [Issues tab](https://github.com/thesandf/thesandf.com/issues) for open tasks, from case studies to tool improvements.
 3. **Submit a Pull Request (PR)**:
    - Fork the repo and create a branch (`git checkout -b feature/your-contribution`).
    - Follow the formats below for case studies or other contributions.
    - Submit your PR with a clear description of what you’re adding and why.
-4. **Join the Discussion**: Share ideas or ask questions in [GitHub Discussions](https://github.com/thesandf/thesandf.xyz/discussions).
+4. **Join the Discussion**: Share ideas or ask questions in [GitHub Discussions](https://github.com/thesandf/thesandf.com/discussions).
 5. **Connect**: Follow [@THE_SANDF on X](https://x.com/THE_SANDF) or DM for collabs!
 
 ## Contribution Types
@@ -90,9 +90,9 @@ See `/case-studies/reentrancy-example.md` for a sample case study on a reentranc
 We follow the [Contributor Covenant](https://www.contributor-covenant.org/). Be kind, collaborative, and ready to learn from the multiverse!
 
 ## Questions?
-- Open a [GitHub Discussion](https://github.com/thesandf/thesandf.xyz/discussions).
+- Open a [GitHub Discussion](https://github.com/thesandf/thesandf.com/discussions).
 - DM [@THE_SANDF on X](https://x.com/THE_SANDF).
-- Check the [Issues tab](https://github.com/thesandf/thesandf.xyz/issues) for FAQs.
+- Check the [Issues tab](https://github.com/thesandf/thesandf.com/issues) for FAQs.
 
 **Let’s assemble the Web3 security multiverse!**  Ready to outsmart the next Quicksilver or Madara? Contribute now!
 

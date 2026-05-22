@@ -10,7 +10,7 @@ Yo, shinobi of the DeFi world! You’re forging legendary protocols, but using p
  **Key Lesson**: Insecure randomness is like handing Orochimaru the Chaos Scroll—he’ll twist fate to his will!
  ---
 
- Check out the live version [live here](https://www.thesandf.xyz/posts/mcs/insecure-randomness/?ref=github).
+ Check out the live version [live here](https://www.thesandf.com/posts/mcs/insecure-randomness/?ref=github).
 
 ## 🎬 Story Time: The Chaos Scroll Heist
 Naruto Uzumaki, a loyal ninja, joins the **HiddenLeafLottery**, a smart contract promising 1,000 ETH to a randomly chosen winner based on `block.timestamp`. Orochimaru, a cunning rogue ninja, exploits the predictable randomness to ensure his entry wins the jackpot. By the time Naruto checks the results, Orochimaru has vanished with the prize, leaving the Hidden Leaf Village’s trust in tatters.
@@ -483,9 +483,9 @@ d) It costs more gas than Chainlink VRF
 
 ## Ready to Battle Bugs? 
 
-**Join** the **Defi CTF Challenge!** Audit vulnerable contracts in our Defi CTF Challenges (Full credit to [Hans Friese](https://x.com/hansfriese), co-founder of [Cyfrin](https://cyfrin.com).), submit your report via GitHub Issues/Discussions, or tag @THE_SANDF on X. Let’s secure the Web3 multiverse together!  🏗️ [Start the Challenge](https://www.thesandf.xyz/posts/ctf-solutions/defi-ctf-challenges/)
+**Join** the **Defi CTF Challenge!** Audit vulnerable contracts in our Defi CTF Challenges (Full credit to [Hans Friese](https://x.com/hansfriese), co-founder of [Cyfrin](https://cyfrin.com).), submit your report via GitHub Issues/Discussions, or tag @THE_SANDF on X. Let’s secure the Web3 multiverse together!  🏗️ [Start the Challenge](https://www.thesandf.com/posts/ctf-solutions/defi-ctf-challenges/)
 
 
 ### All Files Available here.
 
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}

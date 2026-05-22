@@ -17,7 +17,7 @@ We welcome contributions and discussion from all backgrounds. To keep this commu
 ## Reporting
 If you experience or witness unacceptable behavior, please contact the maintainers:
 - Open a private GitHub issue (Security → Report abuse), or
-- Email: conduct@thesandf.xyz
+- Email: conduct@thesandf.com
 
 Reports will be handled confidentially.
 

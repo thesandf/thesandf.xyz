@@ -1,13 +1,13 @@
-# TheSandF.xyz   
+# TheSandF.com   
 
-Welcome to **TheSandF.xyz**, where **Web3 security meets pop culture**!
+Welcome to **TheSandF.com**, where **Web3 security meets pop culture**!
 Inspired by the MCU’s epic showdowns, anime’s resilience, and legendary boss fights, this repo is a hub for battling DeFi’s darkest exploits. 
 
 ---
 
 ## About TheSandF 🏗️
 
-I’m **TheSandF**, a Web3 security researcher and aspiring smart contract auditor, channeling **Iron Man’s precision**, **Naruto’s grit**, and **Link’s problem-solving** to hunt vulnerabilities like **reentrancy loops**, **MEV sandwich attacks**, and **bridge heists** that drained over **$2B in 2025 (Chainalysis)**.
+I’m **TheSandF**, Smart Contract Security Researcher and Full-Stack Blockchain Engineer focused on secure protocol design, cross-chain systems, and DeFi infrastructure, channeling **Iron Man’s precision**, **Naruto’s grit**, and **Link’s problem-solving** to hunt vulnerabilities like **reentrancy loops**, **MEV sandwich attacks**, and **bridge heists** that drained over **$2B in 2025 (Chainalysis)**.
 
 This repo is my **multiverse HQ**-a place to:
 
@@ -24,8 +24,8 @@ This repo is my **multiverse HQ**-a place to:
 1. **Clone & Setup**
 
    ```bash
-   git clone https://github.com/thesandf/thesandf.xyz.git
-   cd thesandf.xyz
+   git clone https://github.com/thesandf/thesandf.com.git
+   cd thesandf.com
    forge test -vvv
    ```
 ### Optional: DeFiHackLabs Submodule
@@ -37,19 +37,10 @@ If you want to include it for reference:
 git submodule update --init --recursive
 ```
 
-
-2. **Explore the Repo**
-
-   * 📂 **/Multiverse-Case-Studies** → Breakdown of DeFi hacks
-   * 📂 **/ctf-solutions** → CTF write-ups & exploits like [Defi-CTF-Challenges](https://www.thesandf.xyz/posts/ctf-solutions/defi-ctf-challenges/) , [DAIP Audit Challenge](https://www.thesandf.xyz/posts/ctf-solutions/daip-audit-challenge/)  . 
-   * 📂 **/re-hacks**                     → Reproducing Hacks like [DefiHackLabs](https://www.thesandf.xyz/posts/re-hacks/defi-hack-labs/) and more. 
-   * 📂 **/tools** → Security scripts - coming soon.  
-   * 📂 **/resources** → Audit checklists & learning material - coming soon.  
-
-3. **Contribute**
+2. **Contribute**
 
    * ⭐ Star the repo
-   * 💬 Join a [Discussion](https://github.com/thesandf/thesandf.xyz/discussions)
+   * 💬 Join a [Discussion](https://github.com/thesandf/thesandf.com/discussions)
    * 🛠️ Submit a PR → see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
@@ -74,7 +65,7 @@ Whether you’re a dev, auditor, or Web3 builder, let’s make the blockchain sa
 
 **License**: [MIT](LICENSE)
 **Contribute**: See [CONTRIBUTING.md](CONTRIBUTING.md)
-**Community**: [Issues](https://github.com/thesandf/thesandf.xyz/issues) · [Discussions](https://github.com/thesandf/thesandf.xyz/discussions)
+**Community**: [Issues](https://github.com/thesandf/thesandf.com/issues) · [Discussions](https://github.com/thesandf/thesandf.com/discussions)
 **Contact**: DM [@THE_SANDF](https://x.com/THE_SANDF)
 
 ---

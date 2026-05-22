@@ -11,7 +11,7 @@
 
 ---
 
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/flash-loan-oracle-manipulation/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/flash-loan-oracle-manipulation/?ref=github).
 
 ## 🎬 Story Time
 
@@ -51,7 +51,7 @@ This ensures the exploit contract can interact with the DEX and vault as needed,
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 
 ## Attack Flow
@@ -645,7 +645,7 @@ Relying on a simple, on-chain spot price is like building a vault with a lock th
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---
 

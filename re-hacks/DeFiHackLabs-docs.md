@@ -2,7 +2,7 @@
 
 Welcome, defenders of the multiverse! 🕵️‍♂️
 
-At **TheSandF.xyz**, we don’t just read stories about DeFi hacks - we **practice them safely**, learn the mechanics, and understand how to defend against them. This post invites you to dive into **DeFiHackLabs**, a Foundry-based collection of reproduced DeFi exploits, and turn theory into hands-on skills.
+At **thesandf.com**, we don’t just read stories about DeFi hacks - we **practice them safely**, learn the mechanics, and understand how to defend against them. This post invites you to dive into **DeFiHackLabs**, a Foundry-based collection of reproduced DeFi exploits, and turn theory into hands-on skills.
 
 > ⚠️ **Safety first:** All exercises are **local only**. Never deploy vulnerable contracts to mainnet. Use ephemeral environments like Foundry/Anvil.
 
@@ -10,7 +10,7 @@ At **TheSandF.xyz**, we don’t just read stories about DeFi hacks - we **practi
 
 ##  Why practice?
 
-Each case study on TheSandF.xyz (e.g., *Black Widow - Red Room Vault*) tells a story of a hack. Now you can:
+Each case study on thesandf.com (e.g., *Black Widow - Red Room Vault*) tells a story of a hack. Now you can:
 
 * Move from **story → PoC → run locally → inspect → patch**
 * Explore the mechanics of real-world exploits: Access Control, Reentrancy, Oracle manipulation, and more
@@ -23,7 +23,7 @@ Hands-on practice is the fastest way to **master Web3 security**.
 
 ##  Get started
 
-From your local clone of **thesandf.xyz**:
+From your local clone of **thesandf.com**:
 
 ```bash
 # initialize submodule (if not already)
@@ -49,7 +49,7 @@ forge test --match-test testExploitBlackWidow
 
 ## 🏁 Recommended workflow
 
-1. Pick a case study from TheSandF.xyz (e.g., *Black Widow*).
+1. Pick a case study from thesandf.com (e.g., *Black Widow*).
 2. Scroll to the `vuln` block - note `source_local`, `test_name`, and `source_permalink`.
 3. If you just want to **read the PoC**, open `source_permalink`.
 4. To **run it locally**, clone the repo with submodules and run the corresponding test:

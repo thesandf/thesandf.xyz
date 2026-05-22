@@ -18,7 +18,7 @@ This case study illustrates both versions through an MCU analogy:
 
 ---
 
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/arithmetic-overflow-underflow/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/arithmetic-overflow-underflow/?ref=github).
 
 ##  🎬 Story Time - The Battle
 
@@ -33,7 +33,7 @@ Thor ⚡️ enters the battlefield. His mission: **test the limits of Hulk’s r
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ## Vulnerable Contracts (Pre-0.8.0)
 
@@ -404,6 +404,6 @@ contract IronManSuitFixed {
 Like Hulk’s uncontrollable rage and Iron Man’s unstable suit, **unchecked arithmetic is dangerous**. Modern Solidity makes it safer, but auditors must stay vigilant for legacy contracts and unsafe use of `unchecked`.
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---

@@ -9,7 +9,7 @@
 
 ---
 
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/denial-of-service/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/denial-of-service/?ref=github).
 
 ## 🎬 Story Time
 
@@ -34,7 +34,7 @@ In Solidity, this is a **Denial of Service** attack: one malicious participant m
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ## 📌 Vulnerable Contract - `BifrostBridgeVulnerable.sol`
 
@@ -335,7 +335,7 @@ forge test -vv
 Educational minimal reproduction. MCU analogy (Loki clogging Bifrost) makes it memorable, but reflects **real-world DoS scenarios** blocking legitimate users’ withdrawals or actions.
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---
 

@@ -2,8 +2,9 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {BifrostBridgeVulnerable} from
-    "../../../src/Multiverse-Case-Studies/Denial-of-Service/BifrostBridgeVulnerable.sol";
+import {
+    BifrostBridgeVulnerable
+} from "../../../src/Multiverse-Case-Studies/Denial-of-Service/BifrostBridgeVulnerable.sol";
 import {BifrostBridgeFixed} from "../../../src/Multiverse-Case-Studies/Denial-of-Service/BifrostBridgeFixed.sol";
 import {LokiTrickster} from "../../../src/Multiverse-Case-Studies/Denial-of-Service/LokiTrickster.sol";
 

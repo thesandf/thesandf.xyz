@@ -14,7 +14,7 @@ Spider-Man deposits 1,000 mETH into the **MultiverseBridge** on Ethereum (source
 
 ### All Files Available here.
 
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ## Roles / Actors
 | Actor | Role |
@@ -555,6 +555,6 @@ d) It uses an outdated version of OpenZeppelin’s ECDSA library
 
 ### All Files Available here.
 
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 

@@ -5,7 +5,7 @@
 - **Impact**: Victims (e.g., traders) receive fewer tokens due to **negative slippage**, while attackers extract **near risk-free profit** (MEV).  
 - **Fixes**: **Commit–Reveal Schemes**, **Batch Auctions**, and **Private Transaction Relays (Flashbots)** with strict **Slippage Protection**.
 ---
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/reentrancy-cei/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/reentrancy-cei/?ref=github).
 
 ## 🎬 Story Time
 In the bustling DeFi hub of Stark City, **Iron Man (Tony Stark)** fires up his HUD, submitting a massive buy order to **StarkSwap**, a decentralized exchange (DEX). His transaction, glowing with 1 ETH, lands in the **Mempool**-Ethereum’s public queue, visible to all. **JARVIS** warns of prying eyes, but it’s too late. **Quicksilver**, a lightning-fast MEV bot, scans the mempool with predatory precision. Spotting Iron Man’s trade, Quicksilver predicts a price spike and launches a **three-step sandwich attack**:  
@@ -28,7 +28,7 @@ Quicksilver’s speed outpaces Iron Man’s tech, draining value in a flash. Can
 
 ### All Files Available here.
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 
 ##  Vulnerable Pattern: `StarkSwap.sol`
@@ -207,7 +207,7 @@ function batchBuy(uint256 minTokens, address[] memory users, uint256[] memory am
 3. Implement a fix (e.g., `StarkSwapCommitReveal.sol` or `batchBuy` with 0.5% slippage).  
 4. Fork [sol-bug-bench](https://github.com/hans-cyfrin/sol-bug-bench), submit your fix to the Discussions tab, and share your Sepolia address on X with `#TheSandFChallenge` and `@THE_SANDF`.  
 5. **Bonus**: Post a screenshot of JARVIS’s transaction logs!  
-6. Top submissions earn a shoutout on TheSandF.xyz’s X account and a chance to join our audit beta program!
+6. Top submissions earn a shoutout on thesandf.com’s X account and a chance to join our audit beta program!
 
 ## Quiz Time
 1. **What makes StarkSwap.sol vulnerable to a sandwich attack?**  
@@ -236,4 +236,4 @@ function batchBuy(uint256 minTokens, address[] memory users, uint256[] memory am
 
 ### All Files Available here.
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}

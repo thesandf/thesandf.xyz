@@ -8,7 +8,7 @@
 * **Fix:** Apply CEI (update state before external calls) and use a reentrancy guard.
 
 ---
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/reentrancy-cei/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/reentrancy-cei/?ref=github).
 
 ## 🎬 Story Time
 
@@ -33,7 +33,7 @@ This mirrors the movie: Strange wins not by force, but by infinite repetition - 
 | DoctorStrange (EOA / test) | just a caller who wields the TimeStone.|
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ## 📌 Vulnerable Contract
 
@@ -330,6 +330,6 @@ This repo is an **educational minimal reproduction** of reentrancy. The MCU anal
 
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---

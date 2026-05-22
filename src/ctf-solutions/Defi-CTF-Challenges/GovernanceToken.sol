@@ -166,12 +166,7 @@ contract GroupStaking is Ownable {
         // Create the new group
         uint256 groupId = nextGroupId;
         stakingGroups[groupId] = StakingGroup({
-            id: groupId,
-            totalAmount: 0,
-            members: _members,
-            weights: _weights,
-            exists: true,
-            groupOwner: msg.sender
+            id: groupId, totalAmount: 0, members: _members, weights: _weights, exists: true, groupOwner: msg.sender
         });
 
         nextGroupId++;

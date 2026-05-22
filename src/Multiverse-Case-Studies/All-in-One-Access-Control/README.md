@@ -12,7 +12,7 @@ The RedRoomVault contract contains multiple access-control flaws: an unprotected
 
 ---
 
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/all-in-one-access-control/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/all-in-one-access-control/?ref=github).
 
 ## 🎬 Story Time
 
@@ -31,7 +31,7 @@ This is a classic all-in-one vulnerability cocktail.
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ## Attack Flow
 
@@ -417,4 +417,4 @@ Smart contracts are immutable, and their security depends on iron-clad logic. A 
 ---
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}

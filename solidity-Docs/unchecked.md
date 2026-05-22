@@ -17,7 +17,7 @@ draft: false
   "datePublished": "2024-09-04",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://thesandf.xyz/posts/mcs/solidity-docs/unchecked/"
+    "@id": "https://thesandf.com/posts/mcs/solidity-docs/unchecked/"
   }
 }
 </script>

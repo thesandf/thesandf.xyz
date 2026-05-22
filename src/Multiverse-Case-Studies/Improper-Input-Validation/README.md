@@ -8,7 +8,7 @@
 - **Fix:** Require proper identity/authentication (consensus proof, signatures) before allowing exits.  
 
 ---
-Check out the live version of the website [live here](https://www.thesandf.xyz/posts/mcs/improper-input-validation/?ref=github).
+Check out the live version of the website [live here](https://www.thesandf.com/posts/mcs/improper-input-validation/?ref=github).
 
 ## 🎬 Story Time
 
@@ -23,7 +23,7 @@ This mirrors a real smart contract bug: missing **input validation** on withdraw
 > *Fun fact: Loki doesn’t appear in **Doctor Strange (2016)**, but a post-credits scene shows Strange agreeing to help Thor search for Odin - with Loki tagging along. Loki’s impersonator skills make him the perfect metaphor here.*  
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---
 
@@ -213,6 +213,6 @@ This repo is an **educational minimal reproduction** of reentrancy. The MCU anal
 
 
 ### All Files Available here.
-::github{repo="thesandf/thesandf.xyz"}
+::github{repo="thesandf/thesandf.com"}
 
 ---
